@@ -1,27 +1,20 @@
-let post = document.getElementById("BottonPost");
-let clear = document.getElementById("BottonClear");
-let mark = document.getElementById("BottonMark");
-let del = document.getElementById("BottonDelete");
+let post= $("#BottonPost").on("click", TodoPost);
+let clear= $("#BottonClear").on("click", TodoClear);
+let mark= $("#BottonMark").on("click", TodoMark);
+let del= $("#BottonDelete").on("click", TodoDel);
 
-
-post.addEventListener("click",TodoPost);
-clear.addEventListener("click",TodoClear);
-mark.addEventListener("click",TodoMark);
-del.addEventListener("click",TodoDel);
 
 
 
 function TodoPost(e){
 e.preventDefault();
-var todo=document.getElementById("todoTest").value;
-var list=document.getElementById("todoList");
-
-let currentList=list.innerHTML;
-list.innerHTML=currentList+`<input type = "checkbox" name="todo"/> ${todo}<br> `
+var todo= $("#todoTest").val();
+var list= $("#todoList").append(`<input type = "checkbox" name="todo"/> ${todo}<br> `)
 }
 function TodoClear(e){
 e.preventDefault();
-var VarClear=document.getElementsByName("todo");
+
+var VarClear= $("[name='todo']");
 for(var i=0;i<VarClear.length;i++){
     VarClear[i].checked= false;
 }
@@ -29,7 +22,7 @@ for(var i=0;i<VarClear.length;i++){
 }
 function TodoMark(e){
 e.preventDefault();
-var VarClear=document.getElementsByName("todo");
+var VarClear= $("[name='todo']");
 for(var i=0;i<VarClear.length;i++){
     VarClear[i].checked= true;
 }
@@ -38,8 +31,7 @@ for(var i=0;i<VarClear.length;i++){
 }
 function TodoDel(e){
 e.preventDefault();
-var list=document.getElementById("todoList");
-list.innerHTML=" ";
+var list= $("#todoList").html(" ");
 
 
 }
